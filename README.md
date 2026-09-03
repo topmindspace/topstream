@@ -22,6 +22,14 @@ topstream/
 
 ---
 
+## 📝 研析心得 (Notes)
+
+| 标题 | 主题 | 标签 |
+| :--- | :--- | :--- |
+| [2小时上线一个全功能Web应用：我和Grok Bot的真实实战与深度复盘](notes/how-to-build-a-full-web-app-with-grok-bot.md) | Agent 实战 / 全栈开发 | `Grok Bot` `Next.js` `Vercel` `自动化运维` |
+
+---
+
 ## 🎯 维护理念
 
 1. **真实一手**：聚焦亲自验证、动手跑过或深度推敲的内容，拒绝无价值的简单信息堆砌。

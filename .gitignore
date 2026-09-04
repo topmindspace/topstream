@@ -50,3 +50,6 @@ build/
 *.swp
 *.swo
 *~
+
+# WorkBuddy Agent Workspace
+.workbuddy/

@@ -24,6 +24,10 @@ topstream/
 
 ## 📝 研析心得 (Notes)
 
+- [**拐点与分化：2026 年初秋全球大模型发布潮研析报告**](notes/global-llm-releases-report-2026-09.md)  
+  系统覆盖 2026 年 8 月下旬至 9 月初 OpenAI、Anthropic、Google、Meta、阿里、智谱、腾讯、讯飞、DeepSeek 等头部厂商最新发布的旗舰与开源模型，严格区分官方自报与第三方复测口径，深度剖析架构演进、基准实测跑分、Token 经济学账单背离、社区争议与工程落地选型。  
+  `标签：全球大模型评测` `GPT-6 Astra` `Claude Fable 5.1` `Gemini 3.8 Flash` `Token 经济学` `端侧百万上下文` `国产算力集群`
+
 - [**GPT-6 Astra 发布首日记录：技术规格、独立评测与社区反馈**](notes/gpt-6-astra-overview-and-discussion.md)  
   梳理 OpenAI 新一代正代旗舰的技术定位、官方与独立评测数据比对、长任务使用成本核算，以及开发者早期的真实体感与争议观察。  
   `标签：GPT-6 Astra` `基准评测` `Computer Use` `ARC-AGI` `使用成本`

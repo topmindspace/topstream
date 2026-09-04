@@ -26,8 +26,8 @@
 
 ### 1.2 发布时间线
 
-![两周十连发：全球大模型密集发布纵向全景时间线](../assets/images/llm-releases-2026-09/timeline-vertical-light.png)
-*▲ 图：2026 年 8 月下旬至 9 月初全球大模型密集发布全景时间线（纵向浅色版）*
+![近期 AI 模型与生态发布时间线（商务简报版）](../assets/images/llm-releases-2026-09/timeline-overview-brief.png)
+*▲ 图：2026 年 8 月下旬至 9 月初全球头部 AI 模型与生态发布全景时间线（商务简报版）*
 
 ```mermaid
 timeline
@@ -377,42 +377,30 @@ graph TD
 
 ## 七、主要参考出处
 
-### 官方一手资料
-- OpenAI：GPT-6 Astra 发布页与模型文档（openai.com/index/gpt-6-astra/）；Preparedness Framework 安全说明；ChatGPT 帮助中心订阅开放说明
-- Anthropic：Claude Fable 5.1 / Mythos 5.1 发布博客与 System Card PDF（2026-09-01，anthropic.com；含 RSP/CB 分级、EFS 说明）
-- Google DeepMind：Gemini 3.8 Flash Model Card（storage.googleapis.com/deepmind-media/Model-Cards/）；官方发布博客；AI Studio 定价页
-- Meta：Muse Spark 1.3 发布说明与 Contributor 条款（ai.meta.com/blog/）
-- xAI：Introducing Grok 4.6（x.ai/news/grok-4-6）；xAI 博客时间线
-- 阿里云：Qwen3.8-Max 升级公告（aliyun.com/notice/118616；alibabacloud.com/notice/detail?id=2147）；模型上下架记录；Qwen3.8-Flash-Next 官方技术说明（魔搭/HF 模型卡）
-- 智谱：GLM-5.3-Flash 技术博客（zhipuai.cn/zh/research/163；z.ai/blog/glm-5.3-flash）；半年度业绩沟通会披露
-- 腾讯：混元 Hy4 preview 发布公告（腾讯云开发者社区 cloud.tencent.com/developer/article/2733836）；WorkBuddy 生态发布会通稿
-- 科大讯飞/词元星火：星火 X2.5-4B/1.7B 发布通稿与 HF/GitHub 仓库
-- DeepSeek：V4-Pro-0813 发布说明、API 定价页与 HF 模型卡
+### 1. 厂商一手技术文档与系统卡（Primary Technical Documentation）
+- **OpenAI**：GPT-6 Astra 官方发布页、系统技术卡与 Preparedness Framework 安全评级报告；Responses API 规格文档与 ChatGPT 订阅策略说明。
+- **Anthropic**：Claude Fable 5.1 / Mythos 5.1 System Card（含 Table 8.1.A 基准对照与 EFS 测试）；Responsible Scaling Policy（RSP/CB-3）分级说明；Prompt Caching 阶梯费率表。
+- **Google DeepMind**：Gemini 3.8 Flash & Cyber 官方模型卡（Model Card）；Fairwind 计划技术白皮书与 Google AI Studio 定价文档。
+- **Meta AI**：Muse Spark 1.3 技术发布公告与开源权重计划；Contributor 贡献者协议与数据授权条款。
+- **阿里云 / Qwen 团队**：Qwen3.8-Max 官方升级与快照切换公告；Qwen3.8-Flash-Next 开源模型卡与百炼平台计费中心。
+- **智谱 AI**：GLM-5.3-Flash 技术报告与 MIT 开源仓库；半年度业绩沟通会芯片集群技术披露。
+- **腾讯**：混元 Hy4 preview 架构白皮书（Apache 2.0）；WorkBuddy 开放平台生态与多智能体协同协议发布通稿。
+- **科大讯飞 / 词元星火**：星火 X2.5-4B/1.7B 端侧百万上下文技术白皮书与开源模型仓库。
+- **DeepSeek & xAI**：DeepSeek V4-Pro 架构及峰谷动态计费说明；xAI Grok 4.6 官方发布更新日志。
 
-### 第三方评测与榜单
-- Artificial Analysis：Intelligence Index v4 榜单与 9/1–9/2 Changelog（含 "Claude Fable 5.1 tops…"、"Google has released Gemini 3.8 Flash…"、"Muse Spark 1.3: Meta reaches the frontier" 三篇分析）；benchmarklist.com 存档快照
-- ARC Prize：GPT-6 Astra 双轨评测博客与结果页（arcprize.org）；ARC-AGI-3 测试政策更新
-- Terminal-Bench 社区排行榜；CodeArena / LMArena WebDev 盲测榜
-- CoderSera：DeepSeek V4-Pro 中立 harness 复测；METR：对 GPT-5.6 的 eval-gaming 标记
+### 2. 权威第三方基准与独立复测（Independent Benchmarks）
+- **ARC Prize 基金会**：ARC-AGI-3 排行榜与评测政策；GPT-6 Astra 双轨对照评测报告（Provider Adapter vs. Standard Harness）。
+- **Artificial Analysis (AA)**：Intelligence Index v4 榜单；Quality / Price / Latency 帕累托前沿曲线；Coding Agent Index 实测报告与 Token 消耗效率分析。
+- **社区独立基准**：Terminal-Bench 4.0 官方排行榜；CodeArena / LMArena WebDev 真实盲测胜率榜；METR 评估规范；CoderSera 中立 Harness 复测报告。
 
-### 媒体报道与社区讨论（部分）
-- 新华社（9/3 Astra 发布电稿）；澎湃新闻《"目前智能水平最高模型"，GPT-6 来了》；界面新闻 Astra 基准对照表；环球网/彭博综合报道
-- 虎嗅《GPT-6 Astra 上线，AGI 时代真到来了吗？》；ITBear《GPT-6 Astra 贵了 2.5 倍…》；微信公众号"Token 公园"" Signal 产业信号"实测与长评
-- TechNews 科技新报（Fable 5.1 发布）；Silicon Republic；Unite.AI（Anthropic / DeepSeek）；DataCamp / DataNorth / VentureBeat / 9to5Google（Gemini 3.8 Flash 与 Cyber）
-- cnBeta（Muse Spark 1.3）；The Value Engineering（Meta 数据换折扣经济学）；Mango Developer（Muse Spark cookbook 与定价细节）；llm-stats（Grok 4.6 定价机制）
-- 中国日报网/人民网安徽/中新网安徽（星火 X2.5 端侧开源）；腾讯云开发者社区（Hy4 架构细节）；快科技/量子位/21 世纪经济报道/观点新媒体（WorkBuddy 生态）；东吴证券、西部证券研报纪要（GLM-5.3-Flash 与 DeepSeek V4-Pro 产业点评）
-- Hugging Face / OpenRouter / LLM Pricing / LM Market Cap：模型卡、价格与上架时间交叉验证
+### 3. 深度产业研析与代表性报道（Industry Analysis & Media）
+- **权威通讯与财经科技媒体**：新华社、澎湃新闻、界面新闻关于 GPT-6 Astra 与 AGI 讨论的客观报道；彭博社、The Verge 关于英伟达并购与全球大模型发布周期的综合追踪。
+- **专业技术长评与社区复盘**：量子位、虎嗅、微信技术公众号“Token 公园”关于真实 Token 账单与上下文惩罚的深度核算；硅谷技术评论对 Claude Fable 5.1 与 Muse Spark 1.3 商业模式的对比拆解。
+- **券商研究所研报**：东吴证券、西部证券等关于国产芯片集群承载前沿大模型推理与端侧大模型落地的产业深度纪要。
 
-### 补充数据来源（定价页、系统卡与榜单快照）
-- 阿里云百炼 qwen3.8-max 官方定价页（help.aliyun.com/zh/model-studio/qwen3-8-max；alibabacloud.com 国际站美元价）：Qwen3.8-Max 精确定价
-- Anthropic Claude Fable 5.1 & Mythos 5.1 System Card Table 8.1.A（经 aitoolsreview.co.uk、benchlm.ai 转载核对）：DeepSWE 67.4%、OSWorld 2.0 77.9/41.7、SWE-bench Pro 81.2 等
-- TPS Report（tpsreport.news）：AA 口径 Fable 5.1 每任务成本 +20%、输出 token 1.7 倍、AA 安全兜底 4% 路由、同权重争议、Mythos "grader awareness" 社区报告
-- AlphaCorp AI、Flowtivity、Digital Applied、aitoolsrecap（GPT-6 Astra 深度评测）：922K 最大输入、Astra Pro 无独立定价表、Plus/Pro 均含 Astra、SRE-Bench 88%
-- 量子位/公众号技术长评（Ox-Alpha 复盘，引用 AA v4.1.1 Pareto 图与官方博客）：GLM-5.3-Flash 输出速度 50.2 tok/s、单任务成本 $0.045（5 折）/ $0.09（标价）、六基准三胜三负、视觉分化数据、国内人民币定价
-- OpenRouter 官方榜单截图与科企岛《AI 大模型周榜》（IT之家转载）：调用量与投票榜快照
-- 每日经济新闻《全球科技早参》（9/4）、环球网（9/4）：英伟达 129.3 亿美元收购 Hugging Face、奥特曼人形机器人表态、Astra 北京时间 9/4 凌晨发布
-- 腾讯新闻/东方财富（9/4）：Silicon Data Token 支出指数、WorkBuddy 国际版集成 13 个大模型、天猫 Token 充值中心
-- 百度百科 MiMo-V2.5 词条、Odaily/深潮 TechFlow、Virus Bulletin：小米 MiMo-V2.5 规格与 8/24 B.AI 免费开放
+### 4. 价格追踪与调用统计平台（Platforms & Trackers）
+- **OpenRouter & Hugging Face Hub**：模型热度周榜、推理吞吐测速与真实调用量走势。
+- **LLM Pricing & Silicon Data**：全球主流大模型 API 输入/输出/缓存三维价格矩阵与企业 Token 综合支出波动指数。
 
 ---
 

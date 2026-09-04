@@ -24,7 +24,7 @@ topstream/
 
 ## 📝 研析心得 (Notes)
 
-- [**两周十连发：10天内全球大模型发布情况总结-2026年9月4日**](notes/global-llm-releases-report-2026-09.md)  
+- [**两周十连发：10天内全球大模型发布情况总结（2026-09-04）**](notes/global-llm-releases-report-2026-09.md)  
   系统覆盖 2026 年 8 月下旬至 9 月初 OpenAI、Anthropic、Google、Meta、阿里、智谱、腾讯、讯飞、DeepSeek 等头部厂商最新发布的旗舰与开源模型，严格区分官方自报与第三方复测口径，深度剖析架构演进、基准实测跑分、Token 经济学账单背离、社区争议与工程落地选型。  
   `标签：全球大模型评测` `GPT-6 Astra` `Claude Fable 5.1` `Gemini 3.8 Flash` `Token 经济学` `端侧百万上下文` `国产算力集群`
 

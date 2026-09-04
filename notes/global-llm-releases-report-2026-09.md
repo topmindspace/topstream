@@ -1,4 +1,4 @@
-# 拐点与分化：2026 年初秋全球大模型发布潮研析报告
+# 两周十连发：10天内全球大模型发布情况总结-2026年9月4日
 
 > **覆盖窗口**：2026 年 8 月 21 日 — 9 月 4 日（并向前后各延伸数日作为背景）
 > **覆盖厂商**：OpenAI、Anthropic、Google、Meta、xAI、阿里巴巴、智谱 AI、腾讯、科大讯飞、DeepSeek（窗口前夕）、月之暗面/MiniMax/小米（背景）
@@ -25,6 +25,9 @@
 | **OpenAI** | GPT-6 Astra / Astra Pro | 09-03 | 闭源 API（分批开放） | Computer Use 主打；首个网络安全 Critical 评级模型 |
 
 ### 1.2 发布时间线
+
+![两周十连发：全球大模型密集发布纵向全景时间线](../assets/images/llm-releases-2026-09/timeline-vertical-light.png)
+*▲ 图：2026 年 8 月下旬至 9 月初全球大模型密集发布全景时间线（纵向浅色版）*
 
 ```mermaid
 timeline
@@ -242,6 +245,9 @@ V4 系列时间线：4 月 24 日 V4-Pro/V4-Flash 开源预览 → 7 月 31 日 
 *Fable 5.1 的 DeepSWE 67.4% 出自 Anthropic System Card Table 8.1.A（5 次试验均值，官方自注隐藏测试评分假象）。
 
 **读表提示**：Terminal-Bench 2.1 是本轮口径分歧最典型的基准——同一"87.9%"在不同 harness 下可以是 87.9 也可以是 54.68；各家博客口径与模型卡口径也常差 1–9 个百分点（Gemini 90.8 vs 89.4、Astra 57.9 vs 57.7）。横向比较时优先采用同评测方同 harness 的数据（如 AA 系列、ARC Prize 双轨、投票类盲测）。
+
+![全球主流大模型 API 定价与 Token 经济学矩阵](../assets/images/llm-releases-2026-09/pricing-matrix-light.png)
+*▲ 图：全球主流大模型 API 定价与 Token 经济学矩阵（浅色高保真版）*
 
 ### 3.3 API 定价总表（美元/每百万 token，2026-09-04 时点）
 

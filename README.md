@@ -24,9 +24,13 @@ topstream/
 
 ## 📝 研析心得 (Notes)
 
-| 标题 | 主题 | 标签 |
-| :--- | :--- | :--- |
-| [2小时上线一个全功能Web应用：我和Grok Bot的真实实战与深度复盘](notes/how-to-build-a-full-web-app-with-grok-bot.md) | Agent 实战 / 全栈开发 | `Grok Bot` `Next.js` `Vercel` `自动化运维` |
+- [**GPT-6 Astra 发布首日记录：技术规格、独立评测与社区反馈**](notes/gpt-6-astra-overview-and-discussion.md)  
+  梳理 OpenAI 新一代正代旗舰的技术定位、官方与独立评测数据比对、长任务使用成本核算，以及开发者早期的真实体感与争议观察。  
+  `标签：GPT-6 Astra` `基准评测` `Computer Use` `ARC-AGI` `使用成本`
+
+- [**2小时上线一个全功能Web应用：我和Grok Bot的真实实战与深度复盘**](notes/how-to-build-a-full-web-app-with-grok-bot.md)  
+  记录利用 Grok Bot 从零搭建并上线全功能站点的实战经历，包含架构决策、临时隧道故障排查与 7x24 小时运维长效思考。  
+  `标签：Grok Bot` `Next.js` `Vercel` `全栈开发` `自动化运维`
 
 ---
 

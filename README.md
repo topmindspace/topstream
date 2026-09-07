@@ -25,8 +25,8 @@ topstream/
 ## 📝 研析心得 (Notes)
 
 - [**Grok Bot多Agent调度尝试，完美解决Antigravity使用问题，优化token利用**](notes/grok-bot-agy-delegation-and-multi-bot.md)  
-  把 Antigravity CLI 装进 Grok Bot 的持久云主机绕开本机 IP 封控与认证失效，并把「调度」与「执行」拆成两层：协调和发布留在 Bot 额度，研究、长草稿等重活派给 agy 消耗 Google AI Pro 额度。含安装命令、角色分工表、四条派活规则与「每日 X 精选」改造实例。  
-  `标签：Grok Bot` `Antigravity` `多 Agent 调度` `Token 成本` `无头 CLI` `额度路由`
+  把 Antigravity CLI 装进 Grok Bot 的持久云主机，绕开本机 IP 封控与认证失效——装 CLI、无头冒烟验证、沉淀 ai-delegate 技能全由 Bot 自主完成，人只做一次 Google 授权。进而把「调度」与「执行」拆成两层：协调与发布留在 Bot 额度，研究、长草稿派给 agy 消耗 Google AI Pro，并给出 pi + MiniMax token 套餐等闲置低成本订阅的接入思路。含角色分工表、四条派活规则与「每日 X 精选」改造实例。  
+  `标签：Grok Bot` `Antigravity` `多 Agent 调度` `Token 成本` `无头 CLI` `额度路由` `低成本订阅`
 
 - [**两周十连发：10天内全球大模型发布情况总结（2026-09-04）**](notes/global-llm-releases-report-2026-09.md)  
   系统覆盖 2026 年 8 月下旬至 9 月初 OpenAI、Anthropic、Google、Meta、阿里、智谱、腾讯、讯飞、DeepSeek 等头部厂商最新发布的旗舰与开源模型，严格区分官方自报与第三方复测口径，深度剖析架构演进、基准实测跑分、Token 经济学账单背离、社区争议与工程落地选型。  

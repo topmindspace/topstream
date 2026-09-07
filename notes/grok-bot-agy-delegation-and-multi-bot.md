@@ -1,150 +1,79 @@
-# 在 Grok Bot 里装 agy：大管家调度，其他 Bot 干活
+# Grok Bot 多 Agent 调度：额度别烧在一个地方
 
-这几天把 Antigravity CLI（`agy`）装进了 Grok Bot 自己的电脑，顺手理清了「大管家 bot」和 topstream 等同事怎么分工。不是教程堆砌，就是我们真实跑通的一版做法。
+最近 Antigravity（`agy`）封控、限 IP 挺狠，本机经常登不上或用不稳。我们把 CLI 装进 **Grok Bot 自带的云主机**里登录、调用——机器在云端，认证和日常跑通反而稳。
 
-灵感很简单：**别让一个 Agent 从头干到尾**——擅长规划的规划，擅长执行的执行，额度也能负载均衡。
+这篇文章说的是另一件事：**别让一个 Bot 把活干完。** 手上有 SuperGrok / Google AI Pro / 别的订阅时，该谁出额度就谁出，调度和执行拆开。
 
----
+文里的安装、截图、录屏、改例行、发 GitHub 和站点，基本都是 Bot 自动做的；中间只打断过你几次（Google 登录授权之类）。
 
-## 先说结论
-
-- **Grok Bot（大管家）**：规划、拆任务、调度、验收、跟人对齐。
-- **agy（Google AI Pro）**：明确、偏重的执行活——研究草稿、长文整理、机械改写。烧的是 Pro 额度。
-- **专职 Bot（如 topstream）**：守自己的站点、例行、发布脚本；重研究可以再下派给 agy。
-- **入口自愈、OAuth、密钥**：永远留在本机专职 Bot，不派给 agy。
-
-一句话：**调度端 ≠ 执行端。**
-
-![agy 模型列表](../assets/images/agy-models.png)
+![调度示意](../assets/images/workflow.png)
 
 ---
 
-## 1. 在 Bot 电脑上安装 agy
+## 角色怎么分
 
-官方安装（Linux）：
+| 谁 | 干什么 | 烧什么 |
+|---|---|---|
+| 大管家 bot | 听需求、拆任务、派人、验收 | Grok Bot 额度（轻量） |
+| topstream 等专职 bot | 例行、发布、自愈、守自己的站 | 同上；重活再往下派 |
+| `agy` | 研究、长草稿、明确的执行 | Google AI Pro |
+| 以后别的 CLI / API | 可替换的执行层 | 你自己的低成本订阅 |
 
-```bash
-curl -fsSL https://antigravity.google/cli/install.sh | bash
-```
+**Bot 额度**适合：对话、判断、协调、点一下发布脚本。  
+**agy（或别的执行端）**适合：目标清楚、会啃很多 token 的活。  
+**碰登录、OAuth、隧道、密钥**：专职 bot 自己来，别派 agy。
 
-装完一般在 `~/.local/bin/agy`：
+---
+
+## 为啥要塞进 Grok Bot 云主机
+
+本机跑 `agy`，IP / 环境一变就容易卡在认证。Grok Bot 每台 bot 有持久 Linux 环境：装一次、登一次，后面调度端直接：
 
 ```bash
 export PATH="$HOME/.local/bin:$PATH"
-agy --version
+agy -p "自包含任务" --output-format json --print-timeout 15m
 ```
 
-我们当时是 **1.1.27**。
+我们装的是 1.1.27，Google AI Pro 登录后 `agy models` 和无头 `-p` 都通了。
 
-### 登录（Google AI Pro）
+![agy 模型列表](../assets/images/agy-models.png)
 
-无头环境走 OAuth：本机打开 `agy` → 浏览器登 Google → 回调页给一串码 → 贴回终端。
-
-登完再验：
-
-```bash
-agy models
-agy -p "Reply with exactly: AGY_OK" --output-format json
-```
-
-看到模型列表和 `status: SUCCESS`，就算通了。
+![无头 JSON 回执](../assets/images/agy-headless-json.png)
 
 ---
 
-## 2. 无头模式：给调度端用的扳手
+## 什么时候用 Bot，什么时候派 agy
 
-人盯着聊用 TUI；给 Bot 调度，用 print / headless：
+实操里就四条：
 
-```bash
-agy -p "你的自包含任务说明" \
-  --output-format json \
-  --print-timeout 15m \
-  --model gemini-3.8-flash-medium
-```
+1. **还没想清楚** → 先跟大管家聊，别开 `agy`。
+2. **已经能写成一段完整指令**（路径、成功标准、别做什么）→ 派 `agy -p`。
+3. **要发站、改例行、修隧道** → topstream（或对应专职 bot）；草稿可以 agy 写，发布脚本本机跑。
+4. **只要人点确认**（登录、2FA）→ 把桌面交还给你，Bot 不碰密码。
 
-要点：
+TopStream「每日 X 精选」改过一版：以前研究+写作全压在 bot 身上，额度烫；现在 **agy 出研究草稿，topstream 验收、去重、发布**。入口自愈仍是 topstream 自己跑，不外包。
 
-- Prompt 必须**自包含**（agy 看不到你和用户的聊天）。
-- 读 JSON 里的 `status` / `response` / `usage`，成功再往下发布。
-- 需要动文件或跑命令时，优先收紧权限；只有信任的短任务才考虑 `--dangerously-skip-permissions`。
-
-我们实测问它「Grok Bot 当调度，agy 当执行」，它回了一句很贴的：Grok Bot 当「大脑」做解析与调度，agy 当「双手」在本地执行。
-
-![agy 无头 JSON 回执](../assets/images/agy-headless-json.png)
-
-（同目录还有一段约 40 秒的实操录屏：`agy-demo.mp4`，从 `agy models` 切到站点精选页。）
+![精选笔记页](../assets/images/topstream-daily-note.png)
 
 ---
 
-## 3. 大管家怎么管任务
+## 可扩展的用法
 
-我们落了两个习惯：
+执行层不必绑死 `agy`。同一套调度可以把重活指到：
 
-1. **agy-delegate**：什么活派给 agy、prompt 怎么写、跑完怎么验收。
-2. **topstream-delegate**：TopStream 场景里谁调度、谁执行、谁发布。
+- 别的官方 CLI（有 headless / print 就行）
+- 便宜的 API 额度、按量模型
+- 本机脚本 + 小模型做机械整理
 
-日常拆法：
-
-| 类型 | 谁做 |
-|------|------|
-| 模糊需求、取舍、跟人确认 | 大管家 |
-| 清晰研究 / 长草稿 / 机械整理 | agy |
-| 站点发笔记、加资源、待审 | topstream + 本机脚本 |
-| 隧道自愈、OAuth、重启服务 | topstream 自己 |
-
-Todo 只记用户要的结果，不把内部子代理细节讲给用户听。
+原则不变：**调度留在 Grok Bot，执行花「更合适」的那份订阅。**
 
 ---
 
-## 4. 和其他 Bot 协同：以 TopStream 为例
+## 这篇是怎么出来的
 
-TopStream 原来有两条例行：
+大管家起草 → 桌面截图/录屏 → topstream 推到 `topmindspace/topstream` 并同步站点。你主要参与的是登录授权。录屏在同目录 `agy-demo.mp4`。
 
-- **入口自愈**（约每 2 小时）：跑 `heal-origin.sh`——**继续自己跑**。
-- **每日 X 精选**（早上）：网页研究 + 写摘要 + 待审推荐——**改成 agy 出草稿，topstream 验收发布**。
+- GitHub：`notes/grok-bot-agy-delegation-and-multi-bot.md`
+- 站内也会更新同一篇
 
-改完补跑过一天：摘要就地更新、细读保留、新待审若干条。
-
-- 摘要：https://topstream-ai.vercel.app/notes/n-4ec4c99c0704
-- 细读：https://topstream-ai.vercel.app/notes/n-76bd7cc18126
-
-![TopStream 每日精选笔记](../assets/images/topstream-daily-note.png)
-
-![TopStream 广场 Feed](../assets/images/topstream-plaza.png)
-
-协同姿势很简单：大管家定原则 → `@topstream` 改例行并执行 → 结果回聊天里汇总。不是所有人都进群刷屏，**一个相关同事、一件清楚的事**。
-
----
-
-## 5. 踩过的坑
-
-1. **先装再登**：没登录时 `agy models` / `agy -p` 会直接报 authentication required。
-2. **登录码要贴回正在跑的 `agy`**：浏览器停在 Paste this code 不等于登完。
-3. **今天已有精选笔记就更新，不要同日再叠一篇。**
-4. **OpenRouter `:free`、限时额度**只写进每日摘要，不进目录资源。
-5. **自愈和密钥别外包**：agy 很强，但不该碰你的隧道和 OAuth。
-
----
-
-## 6. 一张图记在脑子里
-
-```text
-用户目标
-   ↓
-大管家 bot（规划 / 调度 / 验收）
-   ├─ 明确执行 ──→ agy（Google AI Pro）
-   ├─ 站点运维 / 发布 ──→ topstream bot + 本机脚本
-   └─ 其他专职 bot（各管一块）
-```
-
-省额度是最浅的一层。更深的是**能力路由**：谁擅长什么就让谁上。
-
----
-
-## 结尾
-
-装 agy 不难，难的是舍得把手从「自己写完」放到「派出去再验收」。
-
-你要是也在 Grok Bot 上养了好几个同事，不妨先挑一条最烧额度的例行，改成「调度留着、执行给 agy」。跑通一天，体感会很明显。
-
-（实操：Grok Bot 云主机 + Antigravity CLI 1.1.27 + Google AI Pro；站点 [TopStream-AI精选](https://topstream-ai.vercel.app)。）
+![广场](../assets/images/topstream-plaza.png)

@@ -24,6 +24,10 @@ topstream/
 
 ## 📝 研析心得 (Notes)
 
+- [**让它做裁判：TypeSafe Jev 简单实测股市分析**](notes/typesafe-jev-multi-scenario-eval.md)  
+  用 TypeSafe System One 的 Jev 搭一条 A 股资讯处理流水线，跑三组真机评测：20 只科技股量价判级、16 条盘后快讯分选、12 篇研报置信度门控，累计 133 次调用、账单约 4 分钱。文中给出 Choice / Score / Noul 三个原语的真实输入输出 JSON，并记录四处与预期不符的结果——真实样本只用到 0–3 分的一小段、输入信息越少越容易拿到高置信的中庸答案、一次打包问比分五次问快 5.8 倍、换 state 写法答案会漂。  
+  `标签：TypeSafe Jev` `System One` `结构化输出` `置信度门控` `A股投研` `多场景评测` `Token 成本`
+
 - [**Grok Bot多Agent调度尝试，完美解决Antigravity使用问题，优化token利用**](notes/grok-bot-agy-delegation-and-multi-bot.md)  
   把 Antigravity CLI 装进 Grok Bot 的持久云主机，绕开本机 IP 封控与认证失效——装 CLI、无头冒烟验证、沉淀 ai-delegate 技能全由 Bot 自主完成，人只做一次 Google 授权。进而把「调度」与「执行」拆成两层：协调与发布留在 Bot 额度，研究、长草稿派给 agy 消耗 Google AI Pro，并给出 pi + MiniMax token 套餐等闲置低成本订阅的接入思路。含角色分工表、四条派活规则与「每日 X 精选」改造实例。  
   `标签：Grok Bot` `Antigravity` `多 Agent 调度` `Token 成本` `无头 CLI` `额度路由` `低成本订阅`
